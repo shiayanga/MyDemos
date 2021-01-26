@@ -5,10 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FirstDemo</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.77/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.77/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
 </head>
 
 <body>
-
+    <div id="cesiumContainer"></div>
+    <script>
+        // Your access token can be found at: https://cesium.com/ion/tokens.
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1MzQ2MWM1Yy0xZGE4LTQ2NzktODQ4MC00NGJhOTg3YzQ4NTgiLCJpZCI6NDI2NTUsImlhdCI6MTYxMTY2ODU4M30.0wDy5yCz2sQYQPSP6y_COu6LXycq0Ss6VRnqWRK7Vbs';
+        // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain()
+        });
+        // Add Cesium OSM Buildings, a global 3D buildings layer.
+        const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
+        // Fly the camera to San Francisco at the given longitude, latitude, and height.
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+            orientation: {
+                heading: Cesium.Math.toRadians(0.0),
+                pitch: Cesium.Math.toRadians(-15.0),
+            }
+        });
+    </script>
 </body>
 
 </html>
