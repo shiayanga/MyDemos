@@ -1,0 +1,126 @@
+<html>
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body >
+	<div id="chart">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	
+	var lastDate = 0;
+	var data = []
+	var TICKINTERVAL = 86400000
+	let XAXISRANGE = 777600000
+	function getDayWiseTimeSeries(baseval, count, yrange) {
+		var i = 0;
+		while (i < count) {
+			var x = baseval;
+			var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+			
+			data.push({
+				x, y
+			});
+			lastDate = baseval
+			baseval += TICKINTERVAL;
+			i++;
+		}
+	}
+
+	getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {
+		min: 10,
+		max: 90
+	})
+
+	function getNewSeries(baseval, yrange) {
+		var newDate = baseval + TICKINTERVAL;
+		lastDate = newDate
+		
+		for(var i = 0; i< data.length - 10; i++) {
+      // IMPORTANT
+      // we reset the x and y of the data which is out of drawing area
+      // to prevent memory leaks
+      data[i].x = newDate - XAXISRANGE - TICKINTERVAL
+      data[i].y = 0
+  }
+  
+  data.push({
+  	x: newDate,
+  	y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
+  })
+}
+
+function resetData(){
+    // Alternatively, you can also reset the data at certain intervals to prevent creating a huge series 
+    data = data.slice(data.length - 10, data.length);
+}
+
+
+var options = {
+	series: [{
+		name: 'Marine Sprite',
+		data: [44, 55, 41, 37, 22, 43, 21]
+	}, {
+		name: 'Striking Calf',
+		data: [56, 32, 33, 52, 13, 43, 32]
+        }/*, {
+          name: 'Tank Picture',
+          data: [12, 17, 11, 9, 15, 11, 20]
+        }, {
+          name: 'Bucket Slope',
+          data: [9, 7, 5, 8, 6, 9, 4]
+        }, {
+          name: 'Reborn Kid',
+          data: [25, 12, 19, 32, 25, 24, 10]
+      }*/],
+      chart: {
+      	type: 'bar',
+      	height: 350,
+      	stacked: true,
+      	stackType: '100%'
+      },
+      plotOptions: {
+      	bar: {
+      		horizontal: false,
+      	},
+      },
+      stroke: {
+      	width: 1,
+      	colors: ['#fff']
+      },
+      title: {
+      	text: '100% Stacked Bar'
+      },
+      xaxis: {
+      	categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
+      },
+      tooltip: {
+      	y: {
+      		formatter: function (val) {
+      			return val + "K"
+      		}
+      	}
+      },
+      fill: {
+      	opacity: 1
+      	
+      },
+      legend: {
+      	position: 'top',
+      	horizontalAlign: 'left',
+      	offsetX: 40
+      }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
+</script>
+</script>
+</html>

@@ -1,0 +1,328 @@
+<html>
+    <head>
+        <title>ApexCharts测试样例</title>
+        <style>
+            #chart {
+            /* max-width: 1000px; */
+            margin: 50 auto;
+          }
+        </style>
+    </head>
+    <body bgcolor="#000000">
+        <button onclick="change()">人数变化</button>
+        <div id="chart">
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="text/javascript">
+        var options = {
+    chart: {
+        height: 600,
+        type: "line",
+        stacked: true,
+        toolbar: {
+            show: true,
+            tools: {
+                reset: true,
+                download: false,
+                selection: false,
+                zoom: true,
+                zoomin: false,
+                zoomout: false,
+                pan: false,
+            }
+        },
+        animations: {
+            enabled: true,
+            easing: 'linear',
+            speed: 1000,
+            animateGradually: {
+                enabled: true,
+                delay: 300
+            },
+            dynamicAnimation: {
+                enabled: true,
+                speed: 500
+            }
+        },
+        background: '#FFFFFF',
+        /* dropShadow: {
+            enabled: true,
+            color: "#838B83",
+            top: -10, //设置阴影的上偏移
+            left: 3, //设置阴影的左偏移
+            blur: 3, //设置阴影的模糊距离
+            opacity: 0.56 //设置阴影的透明度
+        }, */
+        /* events: {
+            click: function (event, chartContext, config) {
+                console.log(config);
+                var a = config.config.series[config.seriesIndex].data[config.dataPointIndex];
+                var per = a<0?(-a):a;
+                alert(config.config.labels[config.seriesIndex] + " " +config.config.series[config.seriesIndex].name + " " 
+                    + per);
+            }
+        } */
+    },
+    subtitle:{
+        text:"人数",
+        offsetX:10,
+        //floating:true
+    },
+    title:{
+        text:"井下实时人员变化趋势",
+        align:"center",
+        style:{
+            fontSize:24,
+        }
+    },
+    stroke: {
+        show: true,
+        width: [5, 5,5],
+        curve: ['smooth','smooth','smooth'],
+        //lineCap:'round'
+    },
+    plotOptions: {
+        bar: {
+            columnWidth: "80%",
+            horizontal:false,
+            endingShape:"flat",
+            distributed:false,
+        }
+    },
+    colors: ["#EEAD0E", "#63B8FF", "#000000"],
+    series: [
+        {
+            name: "入井",
+            type: "column",
+            data: [100, 41, 22, 37, 93, 22, 37, 21, 44, 122, 20,100, 41, 22, 37, 93, 22, 37, 21, 44, 122, 20]
+        },
+        {
+            name: "升井",
+            type: "column",
+            data: [-44, -95, -41, -87, -22, -43, -50, -91, -56, -27, -43,-44, -95, -41, -87, -22, -43, -50, -91, -56, -27, -43]
+        },
+        {
+            name: "井下总人数",
+            type: "line",
+            data: [190, 241, 122, 237, 293, 122, 137, 291, 244, 222, 220,190, 241, 122, 237, 293, 122, 137, 291, 244, 222, 220]
+        },
+    ],
+    /* annotations: {
+        xaxis: [{
+            x: new Date('07-01-2003').getTime(),
+            x2: new Date('09-01-2003').getTime(),
+            borderColor: '#DC143C',
+            fillColor: '#000000',
+            strokeDashArray: 0,
+            opacity:0.1,
+            yAxisIndex: 0,
+            label: {
+                show: true,
+                text: 'X轴注释测试',
+                style: {
+                    color: "#ffffff",
+                    background: '#775DD0'
+                }
+            }
+        }],
+        points: [{
+            x: new Date('07-01-2003').getTime(),
+            y: 90,
+            yAxisIndex: 0,
+            seriesIndex: 0,
+            marker: {
+              size: 0,
+              fillColor: "#fff",
+              strokeColor: "#333",
+              strokeWidth: 3,
+              shape: "circle",
+              radius: 2,
+              OffsetX: 0,
+              OffsetY: 0,
+              cssClass: '',
+            },
+            label: {
+                borderColor: '#c2c2c2',
+                borderWidth: 1,
+                text: undefined,
+                textAnchor: 'middle',
+                offsetX: 0,
+                offsetY: -15,
+                style: {
+                    background: '#fff',
+                    color: '#777',
+                    fontSize: '12px',
+                    cssClass: 'apexcharts-point-annotation-label',
+                    padding: {
+                      left: 5,
+                      right: 5,
+                      top: 0,
+                      bottom: 2,
+                    }
+                },
+            }
+          }],
+    }, */
+    /*fill: {
+        opacity: [1, 1, 1],
+        type: "vertical",
+        gradient: {
+            inverseColors: true,
+            shade: "dark",
+            type: "vertical",
+            opacityFrom: [1, 1],
+            opacityTo: [1, 1],
+            stops: [0, 100, 100, 100],
+            inverseColors: true
+        }
+    },*/
+    labels: [
+        "01-01-2003",
+        "02-01-2003",
+        "2003-03-01 16:22:30",
+        "2003-04-01 16:22:30",
+        "05-01-2003",
+        "06-01-2003",
+        "07-01-2003",
+        "08-01-2003",
+        "09-01-2003",
+        "10-01-2003",
+        "11-01-2003",
+        "12-01-2003",
+        "01-01-2004",
+        "2004-02-01 16:22:30",
+        "2004-03-01 16:22:30",
+        "04-01-2004",
+        "05-01-2004",
+        "06-01-2004",
+        "07-01-2004",
+        "08-01-2004",
+        "9-01-2004",
+        "10-01-2004"
+    ],
+    markers: {
+        size: 5,
+    },
+    xaxis: {
+        type: "datetime",
+        dateTimeFomatter: {},
+        labels: {
+            format: "yyyy-MM-dd",
+        }
+    },
+    yaxis: [
+        {
+            labels: {
+                rotate: -60,
+                formatter: function (y) {
+                    if (y.toFixed(0) < 0) {
+                        return -y.toFixed(0) + "人";
+                    } else {
+                        return y.toFixed(0) + "人";
+                    }
+
+                }
+            },
+            tooltip: {
+                enabled: true
+            }
+        },
+        /* {
+            seriesName: '升井',
+            show: false
+        },
+        {
+            seriesName: '入井',
+            show: false
+        },
+        {
+            seriesName: '井下总人数',
+            
+            axisTicks: {
+                show: true,
+            },
+            axisBorder: {
+                show: true,
+            },
+            title: {
+                text: "井下总人数",
+                offsetY: -80,
+                style:{
+                    fontSize: 14,
+                }
+            }
+        }, */
+    ],
+    /*dataLabels: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        formatter: function (value, { seriesIndex, dataPointIndex, w }) {
+            if (value < 0) {
+                return -value;
+            } else {
+                return value;
+            }
+        }
+    },*/
+    tooltip: {
+        //enabled:false,
+        shared: true,
+        intersect: false,
+        x: {
+            format: "yyyy-MM-dd"
+        },
+        y: [
+            {
+                formatter: function (y) {
+                    if (typeof y !== "undefined") {
+                        if (y.toFixed(0) < 0) {
+                            return -y.toFixed(0) + "人";
+                        } else {
+                            return y.toFixed(0) + "人";
+                        }
+                    }
+                    return y;
+                }
+            },
+            {
+                formatter: function (y) {
+                    if (typeof y !== "undefined") {
+                        if (y.toFixed(0) < 0) {
+                            return -y.toFixed(0) + "人";
+                        } else {
+                            return y.toFixed(0) + "人";
+                        }
+                    }
+                    return y;
+                }
+            }
+        ]
+        // fillSeriesColor:true,
+    }
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+
+
+
+function change(){
+    // var ct = new ApexCharts(document.querySelector("#chart"),options);
+    console.log(chart);
+    for(var i = 0;i < 10;i++){
+        chart.appendData([{
+                data:[Math.random()*10],
+            },{
+                data:[Math.random()*10],
+            },{
+                data:[Math.random()*10],
+            }])
+    };
+    
+}
+
+    </script>
+</html>

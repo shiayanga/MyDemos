@@ -1,0 +1,101 @@
+<html>
+
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 800px;
+			margin: 50 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="chart">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	var options = {
+		series: [{
+			name: '超量程',
+			data: [["2020-02-13", 23, 230], ["2020-01-13", 12, 120], ["2020-03-13", 70, 700], ["2020-02-17", 78, 780]]
+		},
+		{
+			name: '报警',
+			data: [["2020-03-13", 80, 800], ["2020-02-10", 79, 790], ["2020-01-13", 90, 900], ["2020-02-14", 50, 500]]
+		},
+		{
+			name: '断电',
+			data: [["2020-01-25", 70, 700], ["2020-02-01", 70, 700], ["2020-03-20", 70, 700], ["2020-02-22", 70, 700]]
+		},
+		{
+			name: '调校',
+			data: [["2020-02-25", 40, 400], ["2020-01-30", 70, 700], ["2020-01-22", 70, 700], ["2020-02-25", 70, 700]]
+		}],
+		/* series: [{
+			name: '超量程',
+			data: [["柳湾", 23, 230], ["香源", 12, 120], ["河东", 70, 700], ["汾西", 78, 780]]
+		},
+		{
+			name: '报警',
+			data: [["柳湾", 80, 800], ["香源", 79, 790], ["河东", 90, 900], ["汾西", 50, 500]]
+		},
+		{
+			name: '断电',
+			data: [["柳湾", 70, 700], ["香源", 70, 700], ["河东", 70, 700], ["汾西", 70, 700]]
+		},
+		{
+			name: '调校',
+			data: [["柳湾", 40, 400], ["香源", 70, 700], ["河东", 70, 700], ["汾西", 70, 700]]
+		}], */
+		chart: {
+			height: 350,
+			type: 'bubble',
+		},
+		dataLabels: {
+			enabled: false
+		},
+		fill: {
+			opacity: 0.8
+		},
+		tooltip: {
+			theme: false,
+			x: {
+				show: false,
+				format: 'yyyy-MM-dd HH:mm:ss',
+				// formatter: undefined,
+			},
+			y: {
+				formatter: function (val) {
+					return val + "次"
+				},
+				title: {
+					formatter: (seriesName) => seriesName,
+				},
+			},
+			z: {
+				formatter: function (val) { },
+				title: ''
+			},
+		},
+		title: {
+			text: '报警次数'
+		},
+		//labels:["柳湾","香源","河东","汾西"],
+		xaxis: {
+			type: 'datetime',
+			labels: {
+				format: 'yyyy-MM-dd HH:mm:ss'
+			}
+		},
+
+	};
+
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	chart.render();
+
+
+</script>
+
+</html>

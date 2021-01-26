@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>ApexCharts测试样例-Scatter</title>
+    <style>
+        #chart {
+            max-width: 1000px; 
+            margin: 50 auto;
+        }
+    </style>
+</head>
+<body >
+    <div id="chart">
+    </div>
+    <div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+       var options = {
+           series: [{
+               name: 'aa',
+               data: [null, 55, 41, 37, 22, 43, 21] 
+            // 每条数据依次对应labels，下同
+            // 若无数据，则为null，不能空着
+        }, {
+            name: 'bb',
+            data: [53, 32, 33, 52, 13, 43, 32]
+        }, {
+            name: 'cc',
+            data: [12, 17, 11, null, 15, 11, 20]
+        }, {
+            name: 'dd',
+            data: [17, 15, 18, 16, 19, 14, 23]
+        }
+        ],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,//开启层叠柱状图
+            toolbar:{
+                show:false, //隐藏右上角的下载按钮
+            }
+        },
+        plotOptions: {
+            bar: {
+            horizontal: false, //设置柱状图为水平方向，默认false
+            columnWidth:"50%"
+        },
+    },
+    title: {
+        text: '测试',
+        align:"center",
+        style:{
+            fontSize:18
+        }
+    },
+    xaxis: {
+        categories: ["湾","水","阳","西","柳","兴","渡"]
+    },
+    yaxis: {
+        title: {
+            text: "总数",
+        },
+    },
+    tooltip: {
+        shared:true,
+        x: {
+            formatter: function (val) {
+                return val;
+            }
+        },
+        y: {
+            formatter: function (val) {
+                return val;
+            }
+        }
+    },
+    fill: {
+        opacity: 1
+    },
+    legend: {
+        position: 'bottom',
+        horizontalAlign: 'center',
+        offsetX: 40
+    }
+};
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+</script>
+</html>

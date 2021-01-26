@@ -1,0 +1,119 @@
+<html>
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body >
+	<div>
+		<div id="chart">
+		</div>
+		<div style="width: 200px;margin: 0 auto">
+			<!-- <button onclick="update()">更新数据</button>
+				<button onclick="reset()">重置数据</button> -->
+			</div>
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script>
+		var options = {
+			series: [{
+				name: '分站数量',
+				data: [44, 55, 57, null, 61, 58, 63, 60, 66]
+			}, {
+				name: '传感器数量',
+				data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+			}, {
+				name: '异常数量',
+				data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+			}],
+			chart: {
+				type: 'bar',
+				height: 350,
+				toolbar:{
+					show:false
+				}
+			},
+			plotOptions: {
+				bar: {
+					horizontal: false,
+					columnWidth: '55%',
+					endingShape: 'rounded'
+				},
+			},
+			stroke: {
+				show: true,
+				width: 5,
+				colors: ['transparent']
+			},
+			legend:{
+				position:"top",
+				horizontalAlign:"right",
+				markers: {
+					radius: 100 // 设置标签为圆形
+				},
+			},
+			title:{
+				text:"各矿设备分布情况"
+			},
+			dataLabels: {
+				enabled: false
+			},
+			yaxis: {
+				show: true,
+				labels: {
+					show: true,
+					align: 'right',
+					minWidth: 0,
+					maxWidth: 160,
+					style: {
+						colors: [],
+						fontSize: '12px',
+						fontFamily: 'Helvetica, Arial, sans-serif',
+						fontWeight: 400,
+						cssClass: 'apexcharts-yaxis-label',
+					},
+					offsetX: 0,
+					offsetY: 0,
+					rotate: 0,
+					formatter: (value) => { return value },
+				},
+
+			},
+			xaxis: {
+				categories: ["柳湾","高阳","水峪","宜兴","中兴","贺西","双柳","南关","曙光"],
+			},
+			tooltip: {
+				y: {
+					formatter: function (val) {
+						return val
+					}
+				}
+			}
+		};
+
+		var chart = new ApexCharts(document.querySelector("#chart"), options);
+		chart.render();
+
+		function update(){
+			chart.updateSeries([{
+				name: '分站数量',
+				data: [44, 55, 57, null, 61, 58, 63, 60, 66]
+			}, {
+				name: '传感器数量',
+				data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+			}, {
+				name: '异常数量',
+				data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+			}])
+		}
+
+		function reset(){
+			chart.updateSeries([])
+		}
+	</script>
+	</html>

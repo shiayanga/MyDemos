@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>ApexCharts测试样例-Scatter</title>
+    <style>
+        #chart {
+            max-width: 1000px; 
+            margin: 50 auto;
+        }
+    </style>
+</head>
+<body >
+    <div id="chart">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    var options = {
+        series: [{
+            name: 'Free Cash Flow',
+            data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            width:"100%"
+        },
+        plotOptions: {
+            bar: {
+                endingShape: 'rounded',
+                columnWidth: '20%',
+            }
+        },
+        theme: {
+            mode: 'dark', 
+            palette: 'palette1', 
+            monochrome: {
+            enabled: false,
+            color: '#0b1f51',
+            shadeTo: 'light',
+            shadeIntensity: 0.65        
+      },
+           
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            
+        },
+        dataLabels:{
+            enabled:false
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        fill: {
+            colors: ["#0579f7","#0acddf"],
+            opacity: 0,
+            type: 'gradient',
+            gradient: {
+                shade: 'light',
+                type: "vertical",
+                opacityFrom: 0.5,
+                opacityTo: 1,
+            },                   
+        },   
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+</script>
+</html>

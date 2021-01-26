@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Syncing charts 同步图表</title>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+	<div style="margin:0 auto;width: 100%;height: 50%;float: left;">
+		<div id="charts1" style="margin-left:12.5%"></div>
+		<div id="charts2" style="margin-left:12.5%"></div>
+		<div id="charts3" style="margin-left:12.5%"></div>
+	</div>
+	<script type="text/javascript">
+
+		Apex = {
+			chart: {
+				height: "100%",			
+				toolbar: {
+					show: false
+				}
+			},
+			stroke: {
+				curve: 'smooth',
+			},
+			grid: {
+				clipMarkers: true
+			},
+			fill: {
+				opacity: 0
+			},
+			markers: {
+				size: 0
+			},
+			yaxis: {
+				labels: {
+					style: {
+						colors: ["#000000"],
+					},
+				},
+			}
+		}
+
+		function generateDayWiseTimeSeries(baseval, count, yrange) {
+			var i = 0;
+			var series = [];
+			while (i < count) {
+				var x = baseval;
+				var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+				series.push([x, y]);
+				baseval += 86400000;
+				i++;
+			}
+			return series;
+		}
+
+		var options = {
+			series: [{
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			}],
+			chart: {
+				id: 'fb',
+				group: 'social',
+				type: 'line',
+				height: "100%"
+			},
+			colors: ['#008FFB'],
+			yaxis: {
+				max: 80,
+				/* labels: {
+					minWidth: 40
+				} */
+			}
+		};
+
+		var chart = new ApexCharts(document.querySelector("#charts1"), options);
+		chart.render();
+
+		var optionsLine2 = {
+			series: [{
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 30
+				})
+			}],
+			chart: {
+				id: 'tw',
+				group: 'social',
+				type: 'line',
+				height: "100%"
+			},
+			colors: ['#546E7A'],
+
+		};
+
+		var chartLine2 = new ApexCharts(document.querySelector("#charts2"), optionsLine2);
+		chartLine2.render();
+
+		var optionsArea = {
+			series: [{
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 30
+				})
+			}],
+			chart: {
+				id: 'yt',
+				group: 'social',
+				type: 'area',
+				height: "100%"
+			},
+			colors: ['#00E396'],
+
+		};
+
+		var chartArea = new ApexCharts(document.querySelector("#charts3"), optionsArea);
+		chartArea.render();
+
+		/* var options = {
+			series: [{
+				name: "氧气1",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			},
+			{
+				name: "氧气12",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			},
+			{
+				name: "氧气13",
+				type: 'area',
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			}],
+			chart: {
+				id: 'fb',
+				group: 'aa',
+				type: 'line',
+				height: 200
+			},
+			colors: ['#008FaB', "#abcdef", "#124567"],
+			yaxis: {
+				labels: {
+					minWidth: 40
+				}
+			},
+			xaxis: {
+				type: 'datetime'
+			},
+		};
+		 var chart = new ApexCharts(document.querySelector("#charts1"), options);
+		chart.render();
+
+		var optionsLine2 = {
+			series: [{
+				name: "风速啊",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 30
+				})
+			},
+			{
+				name: "风速啊哈",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			},
+			{
+				name: "风速啊喂",
+				type: 'area',
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			}],
+			chart: {
+				id: 'tw',
+				group: 'social',
+				type: 'line',
+				height: 200
+			},
+			colors: ['#008FaB', "#abcdef", "#124567"],
+			yaxis: {
+				labels: {
+					minWidth: 40
+				}
+			},
+			xaxis: {
+				type: 'datetime'
+			},
+		};
+
+		var chartLine2 = new ApexCharts(document.querySelector("#charts2"), optionsLine2);
+		chartLine2.render();
+
+		var optionsArea = {
+			series: [{
+				name: "甲烷嘭",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			},
+			{
+				name: "甲烷嘭嘭",
+				type: 'area',
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			},
+			{
+				name: "甲烷嘭嘭嘭",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 10,
+					max: 60
+				})
+			}],
+			chart: {
+				id: 'yt',
+				group: 'aa',
+				type: 'line',
+				height: 200
+			},
+			colors: ['#008FaB', "#abcdef", "#124567"],
+			yaxis: {
+				labels: {
+					minWidth: 40
+				}
+			},
+			xaxis: {
+				type: 'datetime'
+			},
+		};
+
+		var chartArea = new ApexCharts(document.querySelector("#charts3"), optionsArea);
+		chartArea.render();
+
+		var optionsStep = {
+			series: [{
+				name: "电机6",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 0,
+					max: 1
+				})
+			},
+			{
+				name: "电机66",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 0,
+					max: 1
+				})
+			},
+			{
+				name: "电机666",
+				data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+					min: 0,
+					max: 1
+				})
+			}],
+			chart: {
+				id: 'aa',
+				group: 'social',
+				type: 'line',
+				height: 200
+			},
+			stroke: {
+				curve: 'stepline',
+			},
+			colors: ['#008FaB', "#abcdef", "#124567"],
+			yaxis: {
+				labels: {
+					minWidth: 40
+				}
+			},
+			xaxis: {
+				type: 'datetime'
+			},
+		};
+
+		var stepLines = new ApexCharts(document.querySelector("#charts4"), optionsStep);
+		stepLines.render(); */
+
+	</script>
+</body>
+
+</html>

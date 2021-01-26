@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>ApexCharts测试样例-Scatter</title>
+    <style>
+        #chart1 {
+            max-width: 500px; 
+            margin: 50 auto;
+        }
+    </style>
+</head>
+<body >
+    <div id="chart1">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    var options = {
+          series: [76, 65, 61], //这里传过来的数值是各类型人员的占比，而不是人数
+          chart: {
+            height: 300,
+            type: 'radialBar', // 径向柱状图
+        },
+        title:{
+          text:"sdfsdfgs"
+        },
+          plotOptions: { //绘图选项
+            radialBar: {
+            startAngle: 0, //开始时角度
+            endAngle: 360, //结束时旋转的角度
+            hollow: {
+              margin: 5,
+              size: '40%', //每个图形的宽度，数值越大，宽度越小
+          },
+          track:{
+              show:true
+          },
+          dataLabels: {
+              name: {
+                show: true, //鼠标滑过图形时，是否显示该条的名字
+                fontSize:10
+            },
+            value: {
+                show: true, //鼠标滑过图形时，是否显示该条的数值
+                fontSize:10
+            },
+            total: {
+                show: true,
+                label: 'Total',
+                formatter: function (w) {
+                    console.log(w)
+                  var total = w.config.series;
+                  console.log(total);
+                  var number = 0;
+                  for(var i = 0;i < total.length;i++){
+                    number += total[i];
+                }
+                  // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                  return number
+              }
+          }
+      },
+
+  }
+},
+labels: ['人员数量', '特种作业人员', '矿领导'],
+legend: {
+          show: true, //是否显示图例，默认为false
+          floating: false, //浮动在图表上方
+          fontSize: '12px',
+          position: 'left', // 图例的位置，四种可选：top/right/bottom/left
+          labels: {
+            useSeriesColors: true, //图例中的文字是否启用原色,默认为false
+        },
+        markers: {
+            size: 5
+        },
+        formatter: function(seriesName, opts) {
+            return seriesName;
+        },
+        itemMargin: {
+            horizontal: 3, // 单个图例项目的水平边距。
+        }
+    },
+};
+
+var chart = new ApexCharts(document.querySelector("#chart1"), options);
+chart.render();
+</script>
+</html>

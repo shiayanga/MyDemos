@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body >
+	<div id="chart"></div>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script>
+		
+
+		var options = {
+			series: [{
+				name: '测试 1',
+				data: [80, 50, 30, 40, 100, 20],
+			}, {
+				name: '测试 2',
+				data: [20, 30, 40, 80, 20, 80],
+			}, {
+				name: '测试 3',
+				data: [44, 76, 78, 13, 43, 10],
+			}],
+			chart: {
+				height: 350,
+				type: 'radar'
+			},
+			title: {
+				text: 'Radar Chart - Multi Series'
+			},
+			
+			fill: {
+				opacity: 0
+			},
+			markers: {
+				size: 0
+			},
+			plotOptions: {
+				radar: {
+					offsetX: 0,
+					offsetY: 0,
+					polygons: {
+						strokeColors: '#e8e8e8',
+						connectorColors: '#e8e8e8',
+						fill: {
+							colors: ["#010101","#020202","#030303"]
+						}
+					}
+				}
+			},
+			xaxis: {
+				categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+			},
+			yaxis: {
+				labels: {
+					style: {
+						colors: ["#000000"],						
+					},				
+				},
+			}
+		};
+
+		var chart = new ApexCharts(document.querySelector("#chart"), options);
+		chart.render();
+
+	</script>
+</body>
+</html>

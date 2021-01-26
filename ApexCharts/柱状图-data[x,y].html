@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body >
+	<div id="chart">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+var options = {
+	series: [{
+    data: [{
+        x: 'Apple',
+        y: 54,
+        z:"12adasdgsdfsdasd"
+    }, {
+        x: 'Orange',
+        y: 43,
+        z:"12adagdfgsdasd"
+    },
+    {
+        x: 'banana',
+        y: 49,
+        z:"12adagdfgdsdasd"
+    },
+    {
+        x: '梨',
+        y: 76,
+        z:"12adasfddasd"
+    },
+    {
+        x: '黄瓜',
+        y: 122,
+        z:"12adgdfgasdasd"
+    }],
+}],
+      chart: {
+      	type: 'bar',
+      	height: 350,
+      },
+      plotOptions: {
+      	bar: {
+      		horizontal: false,
+      		cloumnWidth:"20%",
+      	},
+      },
+      stroke: {
+      	width: 1,
+      	colors: ['#fff']
+      },
+      title: {
+      	text: 'Category paired values'
+      },
+      xaxis: {
+      	type:"category"
+      },
+      tooltip: {
+      	y: {
+      		formatter: function (val) {
+      			return val + "K"
+      		}
+      	},
+      	z:{
+      		formatter: function (val) {
+      			return null
+      		}
+      	}
+      },
+      fill: {
+      	opacity: 1
+      	
+      },
+      legend: {
+      	position: 'top',
+      	horizontalAlign: 'left',
+      	offsetX: 40
+      }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
+</script>
+</script>
+</html>

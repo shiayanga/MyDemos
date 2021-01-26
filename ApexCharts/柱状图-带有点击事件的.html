@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>ApexCharts测试样例-Scatter</title>
+        <style>
+            #chart {
+            max-width: 1000px; 
+            margin: 50 auto;
+          }
+        </style>
+    </head>
+    <body >
+        <div id="chart">
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        var options = {
+
+        /*
+          series数据格式；
+          series:[{name,data:[]}],
+        */
+          series: [{
+          name: '出勤天数',
+          data: [21, 20, 12, 23, 19, 28, 26, 20]
+        }],
+
+          chart: {
+          type: 'bar', //图表类型，bar为柱状图
+          height: 350,
+          events: {
+            dataPointSelection: function (event, chartContext, config) {
+                    console.log(event);
+                    console.log(chartContext);
+                    console.log(config);
+                    alert(config.w.config.labels[config.seriesIndex] + " " + config.w.config.series[config.seriesIndex].name+" "+config.w.config.series[config.seriesIndex].data[config.dataPointIndex]);
+                }
+            }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+          },
+        },
+        dataLabels: {
+          enabled: true //启用数据标签，即是否直接在图标上显示数据
+        },
+        xaxis: {
+          type:'datetime', //设置X轴的类型 三种可选：category、datetime、numeric
+          labels:{
+            format:"yyyy-MM", //设置X轴时间格式
+            rotate:45,
+            rotateAlways:true,
+            offsetX:15
+
+          }
+        },
+        yaxis: {
+          title: {
+            text: '出勤天数'
+          }
+        },
+
+        //设置X轴的时间
+        labels:[
+          '2018-12','2019-01','2019-02',
+          '2019-03', '2019-04', '2019-05', '2019-06', '2019-07'
+        ],
+
+        fill: {
+          opacity: 1 //设置图形的透明度，数值越小透明度越高，数值范围0-1
+        },
+        tooltip: {
+          x:{
+            format:"yyyy年MM月"
+          },
+          y: {
+            formatter: function (val) {
+              return val + " 天"
+            }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+</html>

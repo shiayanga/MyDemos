@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <title>ApexCharts测试样例-Scatter</title>
+    <style>
+        #chart {
+            max-width: 1000px;
+            margin: 50 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart1">
+    </div>
+    <div id="chart2">
+    </div>
+    <div id="chart3">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    /**
+     * 开始定义公共属性
+     */
+    var Apex = {
+            stroke: {
+                show: true,
+                width: 2,
+            },
+            chart: {
+                height: 200,
+                width: "100%"
+            },
+            dataLabels: {
+                enabled: false
+            },
+        }
+        /**
+         * 定义公共属性结束
+         */
+
+    var options1 = {
+        series: [{
+            name: 'Free Cash Flow',
+            data: [35, 41, 36, 26, 45, 48, 5, 53, 41]
+        }],
+        chart: {
+            type: 'bar',
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+    };
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    chart1.render();
+
+    var options2 = {
+        series: [{
+            name: 'Free Cash Flow',
+            data: [35, 41, 36, 26, 4, 48, 52, 53, 41]
+        }],
+        chart: {
+            type: 'bar',
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+    };
+    var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+    chart2.render();
+
+    var options3 = {
+        series: [{
+            name: 'Free Cash Flow',
+            data: [35, 41, 6, 26, 45, 48, 52, 53, 41]
+        }],
+        chart: {
+            type: 'bar',
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+    };
+
+    var chart3 = new ApexCharts(document.querySelector("#chart3"), options3);
+    chart3.render();
+</script>
+
+</html>

@@ -1,0 +1,202 @@
+<html>
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart2 {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body >
+	<div id="chart1">
+	</div>
+	<div id="chart2">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	var options = {
+  /*
+  series的格式：
+  series:[
+          {name,data:[[a,b,c,......]]},
+          {name,data:[[a,b,c,......]]},
+          {name,data:[[a,b,c,......]]},
+          ......
+          {name,data:[[a,b,c,......]]}
+        ]
+        */
+        series: [
+        {
+        	name: '超量程',
+        	data: [
+        	["2012-12-10",2,"避难室"],
+        	["2012-12-11",1,"避难室"],
+        	["2012-12-12 23:30:30",4,"避难室"],
+        	["2012-12-13",3,"避难室"],
+        	["2012-12-14",5,"避难室"],
+        	]
+        },
+        {
+        	name: '断电',
+        	data: [ 
+        	["2012-12-10",4,"避难室"],
+        	["2012-12-11",4,"机房"],
+        	["2012-12-12",5,"避难室"],
+        	["2012-12-13 09:32:10",4,"避难室"],
+        	["2012-12-14",2,"避难室"],
+        	]
+        },
+        {
+        	name: '求救',
+        	data: [
+        	["2012-12-10",2,"避难室"],
+        	["2012-12-11",9,"避难室"],
+        	["2012-12-12",2,"避难室"],
+        	["2012-12-13",2,"避难室"],
+        	["2012-12-14",9,"避难室"]
+        	]
+        },
+        {
+        	name: '进入限制区域',
+        	data: [
+        	["2012-12-10",2,"避难室"],
+        	["2012-12-11",2,"避难室"],
+        	["2012-12-12",2,"避难室"],
+        	["2012-12-13",2,"避难室"],
+        	["2012-12-14",2,"避难室"]
+        	]
+        },
+        ],
+        chart: {
+        	height: 350,
+    type: 'scatter', //散点图
+    zoom: {
+      type: 'xy' //允许同时在X轴和Y轴上缩放
+  },
+    events:{ //为图表添加事件
+    	beforeMount:function(chartContext, config){
+    		console.log(chartContext);
+    		console.log(config);
+    	},
+    },
+    //开始汉化
+    locales: [{
+    	"name": "zh",
+    	"options": {
+    		"months": [
+    		"一月",
+    		"二月",
+    		"三月",
+    		"四月",
+    		"五月",
+    		"六月",
+    		"七月",
+    		"八月",
+    		"九月",
+    		"十月",
+    		"十一月",
+    		"十二月"
+    		],
+    		"shortMonths": [
+    		"Jan",
+    		"Feb",
+    		"Mar",
+    		"Apr",
+    		"May",
+    		"Jun",
+    		"Jul",
+    		"Aug",
+    		"Sep",
+    		"Oct",
+    		"Nov",
+    		"Dec"
+    		],
+    		"days": [
+    		"星期日",
+    		"星期一",
+    		"星期二",
+    		"星期三",
+    		"星期四",
+    		"星期五",
+    		"星期六"
+    		],
+    		"shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    		"toolbar": {
+    			"exportToSVG": "导出 SVG",
+    			"exportToPNG": "导出 PNG",
+    			"exportToCSV": "导出 CSV",
+    			"menu": "菜单",
+    			"selection": "选择",
+    			"selectionZoom": "缩放",
+    			"zoomIn": "放大",
+    			"zoomOut": "缩小",
+    			"pan": "平移",
+    			"reset": "重置缩放"
+    		}
+    	}
+    }],
+    defaultLocale: "zh"
+    //汉化结束
+},
+markers:{
+    size:10, //设置图表中标记点的大小
+},
+grid: {
+    show:true, //显示图表中的网格，默认为true
+    xaxis: {
+    	lines: {
+        show: true //显示图表中平行于X轴的网格
+    }
+},
+yaxis: {
+	lines: {
+        show: true //显示图表中平行于Y轴的网格
+    }
+},
+},
+xaxis: {
+    type: 'datetime', //X轴的类型，三种可选：category、datetime、numeric
+    labels: {
+      format: "yyyy-MM-dd HH:mm:ss", //X轴的时间格式
+  }
+},
+fill:{
+	opacity:0.2
+},
+tooltip: {
+        enabled:true, //开启工具提示，鼠标经过某点时显示该点的信息
+        shared: false,
+        intersect: true,
+        x: {
+        	format: "yyyy-MM-dd HH:mm:ss"
+        },
+        y:{
+        	formatter: function (y) {
+        		if (typeof y !== "undefined") {
+        			if (y.toFixed(0) < 0) {
+        				return -y.toFixed(0) + "次";
+        			} else {
+        				return y.toFixed(0) + "次";
+        			}
+        		}
+        		return y;
+        	}
+        },
+        z:{
+        	formatter:function(z){
+        		return z;
+        	},
+        	title:"位置：",
+        }
+        // fillSeriesColor:true,
+    }
+};
+
+var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
+chart2.render();
+
+
+</script>
+</html>

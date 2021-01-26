@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <title>ApexCharts测试样例-Scatter</title>
+    <style>
+        #chart {
+            max-width: 1000px;
+            margin: 50 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="update()">更新</button>
+    <div id="chart">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    var options = {
+        series: [/* {
+            name: "软件",
+            data: [10, 41, 35, 51, 49, 62, 69, 91]
+        },
+        {
+            name: "软件",
+            data: [1, 4, 3, 5, 9, 6, 9, 9]
+        } */],
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false //是否允许缩放
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 10
+        },
+        stroke: {
+            curve: 'smooth' //绘制平滑曲线还是直线，三种可选：smooth、straight、stepline
+        },
+        title: {
+            text: '产品销售趋势',
+            align: 'center'
+        },
+        xaxis: {
+            type: 'datetime', //设置X轴的类型 三种可选：category、datetime、numeric
+            labels: {
+                format: "yyyy-MM" //设置X轴时间格式
+            }
+        },
+        labels: [
+            '2018-12', '2019-01', '2019-02',
+            '2019-03', '2019-04', '2019-05', '2019-06', '2019-07'
+        ],
+        tooltip: {
+            x: {
+                format: "yyyy年MM月"
+            },
+            y: {
+                formatter: function (val) {
+                    return val + " 件"
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+function update(){
+    chart.updateOptions({
+        series: [{
+            name: "软件",
+            data: [10, 41, 35, 51, 49, 62, 69, 91]
+        },
+        {
+            name: "软件",
+            data: [1, 4, 3, 5, 9, 6, 9, 9]
+        }],
+    })
+}
+    
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<html>
+
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 800px;
+			margin: 50 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="chart">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	var options = {
+		series: [25, 15, 44, 55, 41, 17],
+		chart: {
+			width: '70%',
+			type: 'pie',
+		},
+		labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+		theme: {
+			monochrome: {
+				enabled: true
+			}
+		},
+		plotOptions: {
+			pie: {
+				customScale: 1,
+				dataLabels: {
+					offset: -5
+				}
+			}
+		},
+		title: {
+			text: "Number of leads"
+		},
+		dataLabels: {
+			formatter(val, opts) {
+				const name = opts.w.globals.labels[opts.seriesIndex]
+				return [name, val.toFixed(1) + '%']
+			},
+			style: {
+				fontSize: '12px',
+				fontFamily: 'Microsoft YaHei UI',
+				fontWeight: 'bold',
+			},
+		},
+		legend: {
+			show: false
+		}
+	};
+
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	chart.render();
+
+
+</script>
+
+</html>

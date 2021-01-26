@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>径向条形图</title>
+	<style>
+		#chart {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+	</style>
+</head>
+<body bgcolor="#000000">
+	<div id="chart"></div>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script>
+		
+		var options = {
+			series: [75],
+			chart: {
+				height: 350,
+				type: 'radialBar',
+				toolbar: {
+					show: false
+				}
+			},
+			plotOptions: {
+				radialBar: {
+					startAngle: 0,
+					endAngle: 360,
+					hollow: {
+					size: '65%', // 图形的宽度,数值越大，宽度越小
+					//background: '#fff',						
+				},
+				track: {
+					//background: '#fff',
+					strokeWidth: '65%',
+					show:false       
+				},
+
+				dataLabels: {
+					show: true,
+					name: {
+						show: false
+					},
+					value: {
+						formatter: function(val) {
+							return parseInt(val);
+						},
+						color:"#fff",
+						fontSize: '36px',
+						show: true,
+					}
+				}
+			}
+		},
+		color:"##3A5FCD",
+		fill: {
+			type: 'gradient',
+			gradient: {
+				shade: 'dark',
+				type: 'horizontal',
+				shadeIntensity:1,
+				gradientToColors: ['#00C5CD'],
+				inverseColors: true,
+				opacityFrom: 1,
+				opacityTo: 1,
+				stops: [0, 20]
+			}
+		},
+		stroke: {
+			lineCap: 'round'
+		},
+		labels: ['设备'],
+		legend:{
+			show:true,
+			position:"bottom",
+			horizontalAlign: 'center',
+			labels: {
+				colors: "#fff",				
+			},
+		}
+	};
+
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	chart.render();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<html>
+
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		/* #chart1 {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+		#chart2 {
+			max-width: 1000px; 
+			margin: 50 auto;
+		}
+		#chart3 {
+			max-width: 1000px; 
+			margin: 50 auto;
+		} */
+	</style>
+</head>
+
+<body>
+	<div style="margin:0 auto;width: 100%;height: 50%;float: left;">
+		<div id="chart1" style="float: left;margin-left:12.5%"></div>
+		<div id="chart2" style="float: left;margin-left:12.5%"></div>
+		<div id="chart3" style="float: left;margin-left:12.5%"></div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script>
+
+		Apex = {
+			chart: {
+				height: "100%",
+				toolbar: {
+					show: false
+				}
+			},
+			plotOptions: {
+				radar: {
+					offsetX: 0,
+					offsetY: 0,
+					polygons: {
+						// strokeColors: '#e8e8e8',
+						// connectorColors: '#e8e8e8',
+						// fill: {
+						// 	colors: ["#010101", "#020202", "#030303"]
+						// }
+					}
+				}
+			},
+			stroke: {
+				curve: 'smooth',
+			},
+			grid: {
+				clipMarkers: true
+			},
+			fill: {
+				opacity: 0
+			},
+			markers: {
+				size: 0
+			},
+			legend:{
+				show:false
+			},
+			yaxis: {
+				labels: {
+					style: {
+						colors: ["#000000"],
+					},
+				},
+			}
+		}
+
+		var options1 = {
+			series: [{
+				name: '测试 1',
+				data: [80, 50, 30, 40, 100, 20],
+			}, {
+				name: '测试 2',
+				data: [20, 30, 40, 80, 20, 80],
+			}, {
+				name: '测试 3',
+				data: [44, 76, 78, 13, 43, 10],
+			}],
+			chart: {
+				height: "100%",
+				type: 'radar',
+			},
+			title: {
+				text: "测试啊",
+				align:"center",
+			},
+			xaxis: {
+				categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+			},
+		};
+		var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+		chart1.render();
+
+		var options2 = {
+			series: [{
+				name: '测试 1',
+				data: [80, 50, 30, 40, 100, 20],
+			}, {
+				name: '测试 2',
+				data: [20, 30, 40, 80, 20, 80],
+			}, {
+				name: '测试 3',
+				data: [44, 76, 78, 13, 43, 10],
+			}],
+			chart: {
+				height: "100%",
+				type: 'radar',
+			},
+			xaxis: {
+				categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+			},
+		};
+		var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+		chart2.render();
+
+		var options3 = {
+			series: [{
+				name: '测试 1',
+				data: [80, 50, 30, 40, 100, 20],
+			}, {
+				name: '测试 2',
+				data: [20, 30, 40, 80, 20, 80],
+			}, {
+				name: '测试 3',
+				data: [44, 76, 78, 13, 43, 10],
+			}],
+			chart: {
+				height: "100%",
+				type: 'radar',
+			},
+			xaxis: {
+				categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+			},
+
+		};
+		var chart3 = new ApexCharts(document.querySelector("#chart3"), options3);
+		chart3.render();
+
+
+	</script>
+</body>
+
+</html>

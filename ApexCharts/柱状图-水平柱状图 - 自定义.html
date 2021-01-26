@@ -1,0 +1,88 @@
+<html>
+
+<head>
+	<title>ApexCharts测试样例-Scatter</title>
+	<style>
+		#chart {
+			max-width: 1000px;
+			margin: 50 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="chart">
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	var options = {
+
+		/*
+		  series数据格式；
+		  series:[{name,data:[]}],
+		  */
+		series: [{
+			name: '特种作业人员',
+			data: [20, 65, 70, 50]
+		}/*,{
+			name: '作业人员',
+			data: [20, 5, 7, 5, 9, 8, 76, 9, 22, 13]
+		}*/],
+
+		chart: {
+			type: 'bar', //图表类型，bar为柱状图
+			height: 350
+		},
+		plotOptions: {
+			bar: {
+				horizontal: true,
+				//columnWidth: '60%',
+			},
+		},
+		dataLabels: {
+			enabled: true //启用数据标签，即是否直接在图标上显示数据
+		},
+		xaxis: {
+			title: {
+				text: '出勤天数',
+				align: "right"
+			}
+		},
+		yaxis: {
+			type: 'category'
+		},
+		//设置Y轴的内容
+		labels: ["柳湾", "水峪", "高阳", "贺西"],
+		fill: {
+			type: 'image',
+			opacity: 1,
+			image: {
+				src: ['./14487.jpg','./666.jpg'],
+				/*width: 466,
+				height: 406*/
+			},
+			pattern: {
+				style: 'verticalLines',
+				width: 6,
+				height: 6,
+				strokeWidth: 2,
+			},
+		},
+		tooltip: {
+			x: {
+				format: "yyyy年MM月"
+			},
+			y: {
+				formatter: function (val) {
+					return val + " 人"
+				}
+			}
+		}
+	};
+
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	chart.render();
+</script>
+
+</html>
