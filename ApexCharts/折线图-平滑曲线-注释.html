@@ -11,21 +11,25 @@
 </head>
 
 <body>
-    <button onclick="update()">更新</button>
     <div id="chart">
+        <button onclick="update()">更新</button>
     </div>
+    <div style="padding-left: 25%;">
+        <button onclick="update()">更新</button>
+    </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var options = {
-        series: [/* {
+        series: [{
             name: "软件",
-            data: [10, 41, 35, 51, 49, 62, 69, 91]
+            data: [10, 21, 35, 21, 2, 12, 29, 31]
         },
         {
             name: "软件",
             data: [1, 4, 3, 5, 9, 6, 9, 9]
-        } */],
+        }],
         chart: {
             height: 350,
             type: 'line',
@@ -35,6 +39,21 @@
         },
         dataLabels: {
             enabled: false
+        },
+        annotations: {
+            yaxis: [{
+                y: 50,
+                borderColor: '#B22222',//线条的颜色
+                strokeDashArray: 0,//水平虚线中每个点的距离，设置为0时为直线，其他为虚线
+                label: {
+                    show: true,
+                    text: "定员" + 50 + "人",
+                    style: {
+                        color: "#ffffff",
+                        background: '#B22222',
+                    }
+                }
+            }],
         },
         markers: {
             size: 10
@@ -70,19 +89,20 @@
 
     var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
-function update(){
-    chart.updateOptions({
-        series: [{
-            name: "软件",
-            data: [10, 41, 35, 51, 49, 62, 69, 91]
-        },
-        {
-            name: "软件",
-            data: [1, 4, 3, 5, 9, 6, 9, 9]
-        }],
-    })
-}
-    
+    function update() {
+        chart.updateOptions({
+            series: [{
+                name: "软件",
+                data: [10, 41, 35, 51, 49, 62, 69, 91]
+            },
+            {
+                name: "软件",
+                data: [1, 4, 3, 5, 9, 6, 9, 9]
+            }],
+
+        })
+    }
+
 </script>
 
 </html>
