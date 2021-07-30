@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>加载自定义WMS数据源</title>
+    <meta charset="utf-8" />
+    <!--<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>-->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+            z-index: 0;
+            border: 1px;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpYXlhbmdhIiwiYSI6ImNrZGZiZGhrYTFucXYyeXBjODhweWpzbGEifQ.491FyVJXCj6KbhiCZb9OIw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: {
+                version: 8,
+                "sprite": "http://127.0.0.1:8081/mapbox/mapbox_build/sprite/sprite",            
+                "glyphs": "http://127.0.0.1:8081/mapbox/mapbox_build/fonts/{fontstack}/{range}.pbf",
+                sources: {},
+                layers: [{
+                    'id': 'background',
+                    'paint': {
+                        'background-color': '#08294A'
+                    },
+                    'type': 'background'
+                }]
+            },
+            zoom: 15,
+            center: [-23.99826, 35.90461]
+        });
+
+        map.on('load', function () {
+            map.addSource('wms-test-source', {
+                'type': 'raster',
+                'tiles': [                
+                    "http://192.168.111.91:26821/geoserver/xbd/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&STYLES&LAYERS=xbd%3Axbd&SRS=EPSG%3A3857&WIDTH=768&HEIGHT=625&BBOX={bbox-epsg-3857}"
+                ],
+                'tileSize': 512
+            });
+            map.addLayer(
+                {
+                    'id': 'wms-test-layer',
+                    'type': 'raster',
+                    'source': 'wms-test-source',
+                    'paint': {}
+                },
+            );
+        });
+        map.addControl(new mapboxgl.NavigationControl());
+    </script>
+</body>
+
+</html>
