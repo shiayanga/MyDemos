@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="954a92e8-080d-4dc3-98a8-98ff7b6aa438" name="默认变更列表" comment="创建proj4j的demo" />
+    <list default="true" id="954a92e8-080d-4dc3-98a8-98ff7b6aa438" name="默认变更列表" comment="创建proj4j的demo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/coordinateReferenceSystem/CoordinateReferenceSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/transform/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Proj4jTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Proj4jTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Proj4jTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Proj4jTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
