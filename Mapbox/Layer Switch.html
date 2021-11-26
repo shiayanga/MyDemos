@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>图层切换</title>
+  <meta charset="utf-8" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #map {
+      height: 100%;
+      z-index: 0;
+      border: 1px;
+      border-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="position: absolute;z-index: 2;">
+    <form>
+      <input type="checkbox" name="checkbox" value="a">a<br>
+      <input type="checkbox" name="checkbox" value="b">b<br>
+      <input type="checkbox" name="checkbox" value="c">c<br>
+      <input type="checkbox" name="checkbox" value="d">d
+    </form>
+    <button onclick="change()">切换</button>
+  </div>
+  <div id='map'></div>
+  <script>
+    let a = {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35624728822216, 39.741907188385454]
+          },
+          properties: {
+            lat: 39.741907188385454,
+            lon: 110.35624728822216,
+            name: "gg",
+          }
+        }
+      ]
+    }
+    let b = {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35788607826481, 39.73756950183892]
+          },
+          properties: {
+            lat: 39.73756950183892,
+            lon: 110.35788607826481,
+            name: "ff"
+          }
+        }
+      ]
+    }
+    let c = {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35793767743229, 39.742663538657524]
+          },
+          properties: {
+            lat: 39.742663538657524,
+            lon: 110.35793767743229,
+            name: "ee"
+          }
+        }
+      ]
+    }
+    let d = {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35624728822216, 39.741907188385454]
+          },
+          properties: {
+            lat: 39.741907188385454,
+            lon: 110.35624728822216,
+            name: "aa"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35788607826481, 39.73756950183892]
+          },
+          properties: {
+            lat: 39.73756950183892,
+            lon: 110.35788607826481,
+            name: "dd"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [110.35543218507775, 39.7390406280507]
+          },
+          properties: {
+            lat: 39.7390406280507,
+            lon: 110.35543218507775,
+            name: "cc"
+          }
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              109.87333186,
+              38.73715538,
+              957.20380204
+            ],
+            "type": "Point"
+          },
+          "id": "gis_point.fid-516dcb08_17d2cdd2339_-3123",
+          "geometry_name": "geom",
+          "type": "Feature",
+          "properties": {
+            lon: 109.87333186,
+            lat: 38.73715538,
+            name: "bb"
+          }
+        },        
+      ],
+    }
+
+    let layers = ['a', 'b', 'c', 'd']
+  </script>
+  <script>
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpYXlhbmdhIiwiYSI6ImNrZGZiZGhrYTFucXYyeXBjODhweWpzbGEifQ.491FyVJXCj6KbhiCZb9OIw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [110.36184463256029, 39.74647486122967],
+      zoom: 12
+    });
+
+    map.on('load', function () {
+      map.addLayer({
+        'id': 'a',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': a
+        },
+        'layout': {
+          'icon-image': 'college-11',
+          // get the title name from the source's "title" property
+          'text-field': ['get', 'name'],
+          'text-offset': [0, 1]
+        }
+      });
+
+      map.addLayer({
+        'id': 'b',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': b
+        },
+        'layout': {
+          'icon-image': 'garden-15',
+          // get the title name from the source's "title" property
+          'text-field': ['get', 'name'],
+          'text-offset': [0, 1]
+        }
+      });
+
+      map.addLayer({
+        'id': 'c',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': c
+        },
+        'layout': {
+          'icon-image': 'campsite-15',
+          // get the title name from the source's "title" property
+          'text-field': ['get', 'name'],
+          'text-offset': [0, 1]
+        }
+      });
+
+      map.addLayer({
+        'id': 'd',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': d
+        },
+        'layout': {
+          'icon-image': 'car-15',
+          // get the title name from the source's "title" property
+          'text-field': ['get', 'name'],
+          'text-offset': [0, 1]
+        }
+      });
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+
+  </script>
+  <script>
+    function change() {
+      var obj = document.getElementsByName('checkbox'); //选择所有name="'test'"的对象，返回数组
+      //取到对象数组后，我们来循环检测它是不是被选中
+      var s = [];
+      for (var i = 0; i < obj.length; i++) {
+        if (obj[i].checked) {
+          // s += obj[i].value + ','; //如果选中，将value添加到变量s中
+          s.push(obj[i].value)
+        }
+      }
+      switchLayer(s,layers);
+    }
+
+    function switchLayer(layersToShow,originLayers) {      
+      if(layersToShow.length == 0){
+        showAllLayers(originLayers)
+        return
+      }
+      let subtraction = originLayers.filter(v => !layersToShow.some((item) => item === v))
+      
+      hideAllLayers(subtraction)
+      showAllLayers(layersToShow)
+    }
+
+    function hideAllLayers (layers) {
+      for (let i = 0; i < layers.length; i++) {
+        
+        map.setLayoutProperty(layers[i], 'visibility', 'none');
+      }
+    }
+
+    function showAllLayers (layers) {
+      for (let i = 0; i < layers.length; i++) {
+        
+        map.setLayoutProperty(layers[i], 'visibility', 'visible');
+      }
+    }
+
+  </script>
+</body>
+
+</html>
