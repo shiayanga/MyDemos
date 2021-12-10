@@ -18,8 +18,7 @@
     <h3>Data processing</h3>
     <ul>
       <li><a href="/modelPreprocessing">3D Model Preprocessing</a></li>
-      <li><a href="/addTerrain">Convert DEM data to Mapbox Terrain Style</a></li>
-      <li><a href="/addModel">Add 3D Model</a></li>
+      <li><a href="https://blog.csdn.net/semian7633/article/details/120027672">Convert DEM data to Mapbox Terrain Style</a></li>
     </ul>
     <h3>Demos</h3>
     <ul>
