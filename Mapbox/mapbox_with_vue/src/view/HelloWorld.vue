@@ -15,11 +15,18 @@
         <pre><code class="language-shell  line-numbers">import mapboxgl from 'mapbox-gl'</code></pre>
       </li>
     </ul>
+    <h3>Data processing</h3>
+    <ul>
+      <li><a href="/modelPreprocessing">3D Model Preprocessing</a></li>
+      <li><a href="/addTerrain">Convert DEM data to Mapbox Terrain Style</a></li>
+      <li><a href="/addModel">Add 3D Model</a></li>
+    </ul>
     <h3>Demos</h3>
     <ul>
       <li><a href="/DisplayAMap">Display</a></li>
       <li><a href="/addTerrain">Add 3D terrain</a></li>
       <li><a href="/addModel">Add 3D Model</a></li>
+      <li><a href="/addGeoJson">Add GeoJSON</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
