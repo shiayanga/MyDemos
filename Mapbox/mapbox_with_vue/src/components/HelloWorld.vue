@@ -16,6 +16,7 @@
     <h3>Demos</h3>
     <ul>
       <li><a href="/DisplayAMap">Display a map</a></li>
+      <li><a href="/addTerrain">Add 3D terrain to a map</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
