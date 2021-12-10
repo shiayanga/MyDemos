@@ -9,9 +9,11 @@
     <h3>How to Use Mapbox</h3>
     <ul>
       <li><h4>1. Install</h4>
-        <p>npm install --save mapbox-gl</p></li>
+        <pre><code class="language-shell line-numbers">npm install --save mapbox-gl</code></pre>
+      </li>
       <li><h4>2. import</h4>
-        <p>import mapboxgl from 'mapbox-gl'</p></li>
+        <pre><code class="language-shell  line-numbers">import mapboxgl from 'mapbox-gl'</code></pre>
+      </li>
     </ul>
     <h3>Demos</h3>
     <ul>
@@ -29,10 +31,15 @@
 </template>
 
 <script>
+import Prism from "prismjs";
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   methods: {
     goTo(param) {
@@ -42,7 +49,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

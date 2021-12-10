@@ -1,6 +1,20 @@
 <template>
   <div>
-    <div id="map"></div>
+    <Row type="flex" justify="space-around">
+      <Col span="15" style="height: 800px">
+          <div id="map"></div>
+      </Col>
+      <Col span="8">
+          <pre><code class="language-js line-numbers">mapboxgl.accessToken = 'Your token here'
+new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  center: [-74.5, 40], // starting position [lng, lat]
+  zoom: 9 // starting zoom
+});
+          </code></pre>
+      </Col>
+    </Row>
   </div>
 </template>
 
@@ -27,5 +41,5 @@ export default {
 </script>
 
 <style scoped>
-#map { position: absolute; top: 0; bottom: 0; width: 90%;height: 90%;margin: 2.5% 5% 5% 5%}
+#map { position: absolute; top: 0; bottom: 0; width: 100%;}
 </style>
