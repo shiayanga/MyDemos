@@ -1,6 +1,7 @@
 import DisplayAMap from "@/view/displayAMap";
 import HelloWorld from "@/view/HelloWorld";
 import addTerrain from "@/view/addTerrain";
+import addModel from "@/view/addModel";
 
 const routers = [
     {
@@ -12,7 +13,12 @@ const routers = [
         path:'/addTerrain',
         name:'addTerrain',
         component:addTerrain
+    },{
+        path:'/addModel',
+        name:'addModel',
+        component:addModel
     },
+
     {
         path: '/',
         component: HelloWorld
