@@ -1,6 +1,6 @@
 import DisplayAMap from "@/view/displayAMap";
 import HelloWorld from "@/components/HelloWorld";
-import addTerrain from "@/components/addTerrain";
+import addTerrain from "@/view/addTerrain";
 
 const routers = [
     {
