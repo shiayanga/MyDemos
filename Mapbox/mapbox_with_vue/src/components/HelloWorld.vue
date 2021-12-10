@@ -1,32 +1,29 @@
 <template>
   <div class="hello">
+    <img alt="Vue logo" src="../assets/mapbox.webp">
+    <img alt="Vue logo" src="../assets/logo.png" style="margin-left: 2%">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+      This is a guide,demo and recipes on how to use Mapbox in Vue.js
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h3>How to Use Mapbox</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li><h4>1. Install</h4>
+        <p>npm install --save mapbox-gl</p></li>
+      <li><h4>2. import</h4>
+        <p>import mapboxgl from 'mapbox-gl'</p></li>
+    </ul>
+    <h3>Demos</h3>
+    <ul>
+      <li><a href="/DisplayAMap">Display a map</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li><a href="https://docs.mapbox.com/mapbox-gl-js/api/" target="_blank" rel="noopener">Mapbox API Docs</a></li>
+      <li><a href="https://docs.mapbox.com/mapbox-gl-js/example/" target="_blank" rel="noopener">Mapbox official
+        Demos</a></li>
     </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+
   </div>
 </template>
 
@@ -35,6 +32,11 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    goTo(param) {
+      this.$router.push(param)
+    }
   }
 }
 </script>
@@ -44,14 +46,17 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }

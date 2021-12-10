@@ -3,7 +3,7 @@ import HelloWorld from "@/components/HelloWorld";
 
 const routers = [
     {
-        path:'displayAMap',
+        path:'/displayAMap',
         name:'displayAMap',
         component:DisplayAMap
     },
