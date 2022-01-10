@@ -31,8 +31,4 @@ public class InterruptTest {
         thread.start();
         thread.join();
     }
-
-    public void test(){
-        new HashMap<String, String>()
-    }
 }
