@@ -1,0 +1,28 @@
+RTSP 协议：
+
+    1. 浙江大华
+        rtsp://username:password@ip:rtsp_port/cam/realmonitor?channel=1&subtype=0 -- 通道1主码流            
+
+    2. 海康威视
+        老版本
+            rtsp://username:password@ip:rtsp_port/h264/ch33/main/av_stream
+            注：ch<number> -- ch33:ip通道1，ch34:IP通道2，......
+            例：rtsp://admin:12345@172.6.22.106:554/h264/ch33/main/av_stream   -- 通道1主码流
+
+        新版本
+            rtsp://username:password@ip:rtsp_port/Streaming/Channels/<id>
+            注：id为通道号和码流类型的组合
+                101：通道1主码流
+                102：通道1子码流
+                103：通道1第三码流
+            例：rtsp://admin:12345@172.6.22.234:554/Streaming/Channels/101	 -- 通道1主码流
+            老 URL， NVR（>=64 路的除外） 的 IP 通道从 33 开始；新 URL，通道号全部按顺序从 1 开始。
+
+    注：默认情况下，rtsp的端口号为554        
+
+    3. FFmpeg rtsp 取流格式：
+        取出视频流并转换为 m3u8 格式
+        ffmpeg -rtsp_transport tcp -i "rtsp_url" -c copy -f hls -hls_time 2.0 -hls_list_size 1 -hls_wrap 15 /path_to_m3u8_file/file_name.m3u8
+
+HTTP 协议：
+    参看官方文档
